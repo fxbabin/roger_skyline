@@ -42,13 +42,9 @@ None
 
 #### Root password + confirm
 
-*********2
-
 #### Set up users and passwords
 
 fbabin
-
-****
 
 #### Select your timezone
 
@@ -94,11 +90,4 @@ no
 SSH Server
 
 #### Install GRUB
-
-yes
-
-#### Device for boot loader
-
-/dev/sda
-
 => Installation is finished
