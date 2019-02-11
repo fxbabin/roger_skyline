@@ -1,0 +1,10 @@
+sudo
+vim
+curl
+git
+zsh
+ufw
+portsentry
+fail2ban
+apache2
+mailutils
