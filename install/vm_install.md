@@ -29,3 +29,8 @@ Fixed size
 
 8 Gb
 ```
+
+### Set brifge connection
+
+Settings -> network -> bridge connection (connection between host and vm)
+(-> en0)
