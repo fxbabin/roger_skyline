@@ -1,61 +1,77 @@
-## Debian install 
+# Debian install 
 
 ### Download debian 
 
+```
 https://www.debian.org/distrib/netinst
 
 select
 
 amd64
+```
 
-### Starting Iso
+## Starting Iso
 
+```
 Run the vm
 
 select debian iso
+```
 
-### Debian installation
+## Debian installation
 
-#### GUI
+### GUI
 
+```
 Install 
+```
 
-#### Language
+### Language
 
+```
 English
+```
 
-#### Country
+### Country
 
+```
 United States
+```
+### Keymap to use
 
-#### Keymap to use
-
+```
 American English
+```
 
-#### Configure the network
+### Configure the network
 
+```
 Hostname: debian
+```
 
-#### Domain name
+### Domain name
 
+```
 None
+```
 
-#### Root password + confirm
+### Root password + confirm
 
-*********2
+### Set up users and passwords
 
-#### Set up users and passwords
-
+```
 fbabin
+```
 
-****
+### Select your timezone
 
-#### Select your timezone
-
+```
 Eastern
+```
 
-#### Partitions
+### Partitions
 
+```
 Manual
 
 SCSI1 (sda)
@@ -68,37 +84,31 @@ create a new partition
 2.0 Gb -> Primary -> End -> Swap Area
 
 Finish partitioning and write changes to disk -> yes
+```
 
-#### Use another CD
-
+### Use another CD
+```
 no
-
-#### Debian archive mirror
-
+```
+### Debian archive mirror
+```
 United States
 
 ftp.us.debian.org
 
 HTTP proxy: None
+```
+## Install running
 
-### Install running
-
-Installing Debian ...
-
-#### Participate in the survey
-
+### Participate in the survey
+```
 no
-
-#### Choose Software to Install 
-
+```
+### Choose Software to Install 
+```
 SSH Server
-
-#### Install GRUB
-
+```
+### Install GRUB
+```
 yes
-
-#### Device for boot loader
-
-/dev/sda
-
-=> Installation is finished
+```
