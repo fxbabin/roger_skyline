@@ -30,7 +30,19 @@ Fixed size
 8 Gb
 ```
 
-### Set brifge connection
+### Set bridge connection (optionnal)
 
-Settings -> network -> bridge connection (connection between host and vm)
+If you want to be connected to the 42 network a bridge adapter
+
+Settings -> network -> bridge adapter (connection between host and vm)
 (-> en0)
+
+Static ip and gateway will correspond to your current cluster:
+
+| Cluster | ip | gateway |
+| --- | --- | --- |
+| 1 | 10.11.X.X | 10.11.254.254 |
+| 2 | 10.12.X.X | 10.12.254.254 |
+| 3 | 10.13.X.X | 10.13.254.254 |
+
+else for your static ip, you will have the default one for virtualbox (10.0.2.X)
