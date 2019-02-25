@@ -2,4 +2,4 @@
 
 ### Installation
 
-[installation de la vm](https://github.com/fxbabin/roger_skyline/blob/master/install/vm_install.md)
+[installation of the virtual machine](https://github.com/fxbabin/roger_skyline/blob/master/install/vm_install.md)
