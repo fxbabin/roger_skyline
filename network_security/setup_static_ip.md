@@ -1,6 +1,6 @@
 # Set up a static ip
 
-## Connect to 42 network (optionnal) 
+## Connect to 42 network
 
 vm -> settings -> network -> connection_bridge
 
@@ -8,22 +8,14 @@ vm -> settings -> network -> connection_bridge
 
 ```
 iface enp0s3 inet static
-	address 10.12.2.144		# 10.1<cluster>.XX.XX
-	netmask 255.255.255.252	# /30 netmask
-	gateway 10.12.254.254	# 42 gateway 10.1<cluster>.254.254
+	address 10.13.2.144     # 10.1<cluster>.XX.XX
+	netmask 255.255.255.252 # /30 netmask
+	gateway 10.13.254.254   # 42 gateway 10.1<cluster>.254.254
 ```
 
-## Modify /etc/resolv.conf to add
-
+### Restart network and check ip
+ 
 ```
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-```
-
-## restart network
-
-```
-service networking restart
-ifup enp0s3
-reboot
+sudo service networking restart
+ip addr
 ```

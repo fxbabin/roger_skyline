@@ -22,3 +22,10 @@ vim -E -c PluginInstall -c q -c q
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
+
+## Set up sudoers
+
+In /etc/sudoers (as root) in the 'User specification' section add
+```
+fbabin  ALL=(ALL:ALL) NOPASSWD:ALL
+```
