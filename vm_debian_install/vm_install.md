@@ -45,4 +45,23 @@ Static ip and gateway will correspond to your current cluster:
 | 2 | 10.12.X.X | 10.12.254.254 |
 | 3 | 10.13.X.X | 10.13.254.254 |
 
+For bridge adapter default ip is 10.13.0.254
+
 else for your static ip, you will have the default one for virtualbox (10.0.2.X)
+
+### Setup server for ansible
+
+Modify /etc/ssh/sshd_config to add :
+
+```
+PermitRootLogin yes
+PubkeyAuthentification yes
+```
+
+then reboot or 
+
+```
+service ssh restart
+```
+
+Then copy id_rsa/is_ecdsa key in .ssh/authorized_keys

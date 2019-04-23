@@ -1,0 +1,10 @@
+---
+- name: Virtual Machine Setup
+  hosts: virtual_machine
+  remote_user: root
+
+  tasks:
+    - name: Git Install
+      apt: name=git update_cache=yes
+
+...
