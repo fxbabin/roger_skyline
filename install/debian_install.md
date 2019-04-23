@@ -79,8 +79,8 @@ Create new empty partition
 
 pri/log
 create a new partition
-4.2 Gb -> Primary -> Beginning -> Ext4
-2.4 Gb -> Primary -> End -> Ext4
+4.5 Gb -> Primary -> Beginning -> Ext4
+2.1 Gb -> Primary -> End -> Ext4
 2.0 Gb -> Primary -> End -> Swap Area
 
 Finish partitioning and write changes to disk -> yes
