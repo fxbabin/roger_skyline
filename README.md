@@ -3,11 +3,11 @@
 ## Installation
 
 
-[installation of the virtual machine (virtualbox)](https://github.com/fxbabin/roger_skyline/blob/master/vm_debian_install/vm_install.md)
+[Virtualbox installation (manual)](https://github.com/fxbabin/roger_skyline/blob/master/vm_debian_install/vm_install.md)
 
-[installation of debian on the virtual machine](https://github.com/fxbabin/roger_skyline/blob/master/vm_debian_install/debian_install.md)
+[Automated virtualbox installation](https://github.com/fxbabin/roger_skyline/blob/master/vm_debian_install/vbox_install.sh)
 
-[automated vm setup](https://github.com/fxbabin/roger_skyline/blob/master/vm_debian_install/vbox_install.sh)
+[Debian installation on the virtual machine](https://github.com/fxbabin/roger_skyline/blob/master/vm_debian_install/debian_install.md)
 
 ## Network and Security
 
