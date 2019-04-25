@@ -1,6 +1,6 @@
 # Roger skyline
 
-## Virtualbo and Debian installation
+## Virtualbox and Debian installation
 
 
 [Virtualbox installation (manual)](https://github.com/fxbabin/roger_skyline/blob/master/vm_debian_install/vm_install.md)
