@@ -1,7 +1,7 @@
 ---
 - name: Virtual Machine Setup
   hosts: virtual_machine
-  remote_user: root
+  remote_user: fbabin
 
   tasks:
     - name: Git Install

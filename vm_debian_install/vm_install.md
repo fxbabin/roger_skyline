@@ -30,7 +30,32 @@ Fixed size
 8 Gb
 ```
 
-### Set bridge connection (optionnal)
+## Network setup
+
+### On the virtual machine
+
+#Allow root connexion
+Allow pubkey
+
+set sudo user
+import ecdsa key
+
+
+### NAT and port forwarding
+
+Forward port 2222 of host to port 22 of guest (ssh)
+
+```
+VBoxManage modifyvm "fbabin_vm" --natpf1 "guestssh,tcp,,2222,,22"
+```
+
+Then you can connect with
+
+```
+ssh -p 2222 fbabin@127.0.0.1
+```
+
+### Bridge adapter
 
 If you want to be connected to the 42 network a bridge adapter
 
@@ -48,20 +73,3 @@ Static ip and gateway will correspond to your current cluster:
 For bridge adapter default ip is 10.13.0.254
 
 else for your static ip, you will have the default one for virtualbox (10.0.2.X)
-
-### Setup server for ansible
-
-Modify /etc/ssh/sshd_config to add :
-
-```
-PermitRootLogin yes
-PubkeyAuthentification yes
-```
-
-then reboot or 
-
-```
-service ssh restart
-```
-
-Then copy id_rsa/is_ecdsa key in .ssh/authorized_keys
