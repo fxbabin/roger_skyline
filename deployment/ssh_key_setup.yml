@@ -1,0 +1,14 @@
+---
+- name: Virtual Machine Setup
+  gather_facts: False
+  hosts: virtual_machine
+  remote_user: fbabin
+  become: yes
+  vars:
+    user: fbabin
+
+  tasks:
+    - name: Add ssh key
+      when: user is defined
+      authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_ecdsa.pub')}}"
+...

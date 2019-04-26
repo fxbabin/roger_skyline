@@ -1,0 +1,12 @@
+---
+- name: Virtual Machine Setup
+  gather_facts: False
+  hosts: virtual_machine
+  remote_user: fbabin
+  become: yes
+  vars:
+    user: fbabin
+
+  roles:
+    - ssh_config
+...

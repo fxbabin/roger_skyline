@@ -55,7 +55,7 @@ Hostname: debian
 None
 ```
 
-### Root password + confirm
+### Root password (empty) + confirm for user to be sudo
 
 ### Set up users and passwords
 
