@@ -1,21 +1,13 @@
 ---
-- name: Forbid Password Authentification
-  lineinfile:
-    dest=/etc/ssh/sshd_config
-    regexp='^PasswordAuthentication'
-    line="PasswordAuthentication no"
-    state=present
-    backup=yes
+- name: Add SSH key
+  when: user is defined
+  authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_ecdsa.pub')}}"
 
-- name: Forbid Root Login
-  lineinfile:
-    dest=/etc/ssh/sshd_config
-    regexp='^PermitRootLogin'
-    line="PermitRootLogin no"
-    state=present
-    backup=yes
+- name: Add a static IP
+  when: user is defined
+  template: src=templates/interfaces.j2 dest=/etc/network/interfaces
 
-- name: Change SSH Port
+- name: Change SSH port
   lineinfile:
     dest=/etc/ssh/sshd_config
     regexp='^Port'
@@ -30,8 +22,17 @@
     line="PubkeyAuthentication yes"
     state=present
     backup=yes
-  notify:
-    - restart ssh
 
-- name: set ansible_ssh_port to default
-  set_fact: ansible_ssh_port=54321
+- name: Forbid Root Login
+  lineinfile:
+    dest=/etc/ssh/sshd_config
+    regexp='^PermitRootLogin'
+    line="PermitRootLogin no"
+    state=present
+    backup=yes
+
+- name: restart vm
+  command: reboot
+  async: 1
+  poll: 0
+  ignore_errors: yes
