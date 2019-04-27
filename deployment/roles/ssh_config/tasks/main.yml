@@ -3,10 +3,6 @@
   when: user is defined
   authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_ecdsa.pub')}}"
 
-- name: Add a static IP
-  when: user is defined
-  template: src=templates/interfaces.j2 dest=/etc/network/interfaces
-
 - name: Change SSH port
   lineinfile:
     dest=/etc/ssh/sshd_config
@@ -30,9 +26,3 @@
     line="PermitRootLogin no"
     state=present
     backup=yes
-
-- name: restart vm
-  command: reboot
-  async: 1
-  poll: 0
-  ignore_errors: yes

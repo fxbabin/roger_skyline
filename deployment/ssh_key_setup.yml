@@ -10,4 +10,12 @@
 
   roles:
     - ssh_config
+    - static_ip
+  
+  post_tasks:
+    - name: restart vm
+      command: reboot
+      async: 1
+      poll: 0
+      ignore_errors: yes
 ...

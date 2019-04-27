@@ -1,0 +1,5 @@
+---
+- name: Add a static IP
+  when: user is defined
+  template: src=templates/interfaces.j2 dest=/etc/network/interfaces
+
