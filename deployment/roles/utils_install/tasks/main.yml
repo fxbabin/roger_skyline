@@ -32,6 +32,14 @@
 - name: Creating new ~/.zshrc
   shell: 'cp /home/{{ user }}/.oh-my-zsh/templates/zshrc.zsh-template /home/{{ user }}/.zshrc '
 
+- name: Add zsh execution in bashrc
+  lineinfile:
+    dest: /home/{{ user }}/.bashrc
+    regexp: '^zsh'
+    line: "zsh"
+    state: present
+    backup: yes
+  
 - name: After installation update and upgrade
   apt:
     upgrade: yes
