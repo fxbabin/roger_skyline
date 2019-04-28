@@ -7,8 +7,10 @@
   vars:
     user: fbabin
 
-  tasks:
+  pre_tasks:
     - name: Wait for new target connection to become reachable/usable
       wait_for_connection:
-
+  
+  roles:
+    - utils_install
 ...

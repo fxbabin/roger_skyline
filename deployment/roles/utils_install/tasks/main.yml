@@ -1,0 +1,38 @@
+---
+- name: Update and upgrade
+  apt:
+    upgrade: yes
+    update_cache: yes 
+
+- name: Utils installation
+  apt:
+    name:
+      - vim
+      - git
+      - zsh
+      - curl
+    update_cache: yes
+    state: latest
+
+- name: Vim setup
+  template: src=templates/vimrc.j2 dest=/home/{{ user }}/.vimrc
+
+- git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: /home/{{ user }}/.vim/bundle/Vundle.vim
+
+- name: Install vim plugins 
+  command: vim -E -c PluginInstall -c q -c q
+
+- name: Cloning  oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: /home/{{ user }}/.oh-my-zsh
+
+- name: Creating new ~/.zshrc
+  shell: 'cp /home/{{ user }}/.oh-my-zsh/templates/zshrc.zsh-template /home/{{ user }}/.zshrc '
+
+- name: After installation update and upgrade
+  apt:
+    upgrade: yes
+    update_cache: yes

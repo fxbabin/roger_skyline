@@ -24,7 +24,7 @@ VBoxManage createvm --name $VM \
 ##############
 
 VBoxManage createhd --filename $MEDIUM_PATH \
-            --size 8000 \
+            --size 8192 \
             --format VDI \
             --variant Fixed
 
