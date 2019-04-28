@@ -11,6 +11,6 @@
 
 ## Network and Security
 
-[setting up static ip and netmask](https://github.com/fxbabin/roger_skyline/blob/master/network_security/setup_static_ip.md)
+[setting up ssh](https://github.com/fxbabin/roger_skyline/blob/master/deployment/roles/ssh_config/tasks/main.yml)
 
-[setting up ssh](https://github.com/fxbabin/roger_skyline/blob/master/network_security/setup_ssh.md)
+[setting up static ip](https://github.com/fxbabin/roger_skyline/blob/master/deployment/roles/static_ip/tasks/main.yml)
