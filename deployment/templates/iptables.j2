@@ -1,0 +1,48 @@
+
+iptables -A INPUT -i lo -j ACCEPT                                      # Autoriser les flux en localhost
+iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT # Autoriser les connexions déjà établies,
+iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT                   # Autoriser SSH,
+iptables -A INPUT -p tcp -m tcp --dport http -j ACCEPT                 # Autoriser HTTP,
+iptables -A INPUT -p tcp -m tcp --dport https -j ACCEPT                # Autoriser HTTPS,
+iptables -P INPUT DROP                                                 # Politique par défaut de la table INPUT : DROP. (i.e bloquer tout le reste).
+iptables -P FORWARD DROP                                               # On est pas un routeur ou un NAT pour un réseau privé, on ne forward pas de paquet.
+
+
+#################
+#   Anti DDOS   #
+#################
+
+# Reject smurf attacks (distributed denial of service)
+sudo iptables -A INPUT -p icmp -m icmp --icmp-type address-mask-request -j DROP
+sudo iptables -A INPUT -p icmp -m icmp --icmp-type timestamp-request -j DROP
+sudo iptables -A INPUT -p icmp -m icmp -j DROP
+
+# Drop all invalid packets
+sudo iptables -A INPUT -m state --state INVALID -j DROP
+sudo iptables -A FORWARD -m state --state INVALID -j DROP
+sudo iptables -A OUTPUT -m state --state INVALID -j DROP
+
+# Drop excessive RST packets to avoid smurf attacks
+sudo iptables -A INPUT -p tcp -m tcp --tcp-flags RST RST -m limit --limit 2/second --limit-burst 2 -j ACCEPT
+
+######################
+#   Anti portscans   #
+######################
+
+#nmap -p 54321 10.13.2.144
+
+# Anyone who tried to portscan us is locked out for an entire day.
+sudo iptables -A INPUT   -m recent --name portscan --rcheck --seconds 86400 -j DROP
+sudo iptables -A FORWARD -m recent --name portscan --rcheck --seconds 86400 -j DROP
+
+# Once the day has passed, remove them from the portscan list
+sudo iptables -A INPUT   -m recent --name portscan --remove
+sudo iptables -A FORWARD -m recent --name portscan --remove
+
+
+#
+#
+### Protection against port scanning ### 
+sudo iptables -N port-scanning 
+sudo iptables -A port-scanning -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s --limit-burst 2 -j RETURN 
+sudo iptables -A port-scanning -j DROP  
