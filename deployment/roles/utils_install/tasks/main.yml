@@ -17,13 +17,6 @@
 - name: Vim setup
   template: src=templates/vimrc.j2 dest=/home/{{ user }}/.vimrc
 
-- git:
-    repo: https://github.com/VundleVim/Vundle.vim.git
-    dest: /home/{{ user }}/.vim/bundle/Vundle.vim
-
-- name: Install vim plugins 
-  command: vim -E -c PluginInstall -c q -c q
-
 - name: Cloning  oh-my-zsh
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh

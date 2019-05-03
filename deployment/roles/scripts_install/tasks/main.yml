@@ -1,0 +1,17 @@
+---
+- name: install update script
+  template: src=templates/update.j2 dest=/home/{{ user }}/update.sh
+
+- name: Creates weekly backup cronjob
+  cron: minute="0" hour="0" weekday="sun"
+        name="update script (weekly schedule)"
+        user="root"
+        job="/home/{{ user }}/update.sh"
+
+- name: Creates reboot update cronjob
+  cron:
+    name : "update script (reboot schedule)"
+    special_time: "{{ item }}"
+    job: "/home/{{ user }}/update.sh"
+  with_items:
+    - reboot
