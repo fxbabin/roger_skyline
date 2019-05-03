@@ -11,6 +11,7 @@
       - git
       - zsh
       - curl
+      - mailutils
     update_cache: yes
     state: latest
 

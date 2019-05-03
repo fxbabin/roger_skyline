@@ -2,8 +2,8 @@
 - name: install update script
   template: src=templates/update.j2 dest=/home/{{ user }}/update.sh
 
-- name: Creates weekly backup cronjob
-  cron: minute="0" hour="0" weekday="sun"
+- name: Creates weekly update cronjob
+  cron: minute="0" hour="4" weekday="sun"
         name="update script (weekly schedule)"
         user="root"
         job="/home/{{ user }}/update.sh"
@@ -15,3 +15,12 @@
     job: "/home/{{ user }}/update.sh"
   with_items:
     - reboot
+
+- name: install crontab check script
+  template: src=templates/crontab_changes.j2 dest=/home/{{ user }}/crontab_check.sh
+
+- name: Creates daily /etc/crontab check cronjob
+  cron: minute="0" hour="0"
+        name="/etc/crontab check script (daily schedule)"
+        user="root"
+        job="/home/{{ user }}/crontab_check.sh"

@@ -1,0 +1,15 @@
+CHECK=~/md5sum_crontab_check.txt
+
+if [ ! -f $CHECK ]; 
+then
+	`md5sum /etc/crontab > $CHECK`
+fi
+
+MD5CHECK=`md5sum /etc/crontab > ~/tmp_check`
+
+DIFF=$(diff $CHECK ~/tmp_check)
+if [ "$DIFF" != "" ];
+then
+	`mail -s "the file /etc/crontab has been modified, certainly a spy again !" root < /dev/null`
+	`md5sum /etc/crontab > $CHECK`
+fi
